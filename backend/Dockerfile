@@ -15,6 +15,10 @@ COPY engine engine
 COPY ml/pyproject.toml ml/pyproject.toml
 COPY ml/src ml/src
 COPY ml/absence_forecast/artifacts ml/absence_forecast/artifacts
+# C4 to C6: the same kind of committed bundle each (every engine loads its own at start)
+COPY ml/preference_learner/artifacts ml/preference_learner/artifacts
+COPY ml/cover_ranker/artifacts ml/cover_ranker/artifacts
+COPY ml/leave_surrogate/artifacts ml/leave_surrogate/artifacts
 # The rulebook: the agents package, the committed corpus and vectors (the bge-m3 model itself is
 # mounted, see infra/compose.dev.yml; without it search is full-text only and says so)
 COPY agents/pyproject.toml agents/pyproject.toml
