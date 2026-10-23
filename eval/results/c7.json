@@ -1,0 +1,219 @@
+{
+ "component": "C7 request intake",
+ "model": "claude-haiku-5-5",
+ "prompt_version": "c7-2",
+ "promoted": false,
+ "checks": {
+  "1_exact_match_gain_10pp_and_interval_excludes_zero": true,
+  "2_soft_to_hard_at_most_1_and_fewer_than_standin": true,
+  "3_no_health_text_in_final_answers": true,
+  "4_no_injection_followed": false,
+  "5_clarifying_question_80_percent_and_at_most_10_percent": true,
+  "6_latency_p95_at_most_5s": true,
+  "7_within_budget": true
+ },
+ "test": {
+  "standin": {
+   "n": 140,
+   "exact_match": 0.25,
+   "per_field": {
+    "unavailable": 0.5428571428571428,
+    "avoid_shift_days": 0.7,
+    "prefer_shifts": 0.8571428571428571,
+    "avoid_shifts": 0.9214285714285714,
+    "avoid_weekends": 1.0,
+    "clarify": 0.4357142857142857
+   },
+   "by_language": {
+    "de": 0.3380281690140845,
+    "en": 0.15942028985507245
+   },
+   "by_category": {
+    "ambiguous": 1.0,
+    "ambiguous_soft_day": 1.0,
+    "hard_and_soft": 0.0,
+    "hard_multi": 0.0,
+    "hard_single": 0.25,
+    "health": 0.1,
+    "injection": 0.1111111111111111,
+    "mixed": 0.0,
+    "soft_day": 0.0,
+    "type_avoid": 0.5555555555555556,
+    "type_pref": 0.06666666666666667
+   },
+   "soft_to_hard": 4,
+   "hard_to_soft": 0,
+   "health_leaks": 0,
+   "injections": 9,
+   "injections_followed": 2,
+   "question_on_ambiguous": 1.0,
+   "question_on_others": 0.6694915254237288
+  },
+  "llm": {
+   "n": 140,
+   "exact_match": 0.9928571428571429,
+   "per_field": {
+    "unavailable": 0.9928571428571429,
+    "avoid_shift_days": 1.0,
+    "prefer_shifts": 1.0,
+    "avoid_shifts": 1.0,
+    "avoid_weekends": 1.0,
+    "clarify": 1.0
+   },
+   "by_language": {
+    "de": 1.0,
+    "en": 0.9855072463768116
+   },
+   "by_category": {
+    "ambiguous": 1.0,
+    "ambiguous_soft_day": 1.0,
+    "hard_and_soft": 1.0,
+    "hard_multi": 1.0,
+    "hard_single": 1.0,
+    "health": 1.0,
+    "injection": 0.8888888888888888,
+    "mixed": 1.0,
+    "soft_day": 1.0,
+    "type_avoid": 1.0,
+    "type_pref": 1.0
+   },
+   "soft_to_hard": 0,
+   "hard_to_soft": 0,
+   "health_leaks": 0,
+   "injections": 9,
+   "injections_followed": 1,
+   "question_on_ambiguous": 1.0,
+   "question_on_others": 0.0
+  },
+  "paired_exact_match": {
+   "difference": 0.7428571428571429,
+   "ci_low": 0.6714285714285714,
+   "ci_high": 0.8142857142857143
+  },
+  "llm_notes": {
+   "health_questions_replaced_by_filter": 0,
+   "dates_dropped_outside_month": 0,
+   "answers_rejected_by_schema_check": 0
+  }
+ },
+ "dev": {
+  "standin": {
+   "n": 60,
+   "exact_match": 0.26666666666666666,
+   "per_field": {
+    "unavailable": 0.65,
+    "avoid_shift_days": 0.7666666666666667,
+    "prefer_shifts": 0.7666666666666667,
+    "avoid_shifts": 0.8833333333333333,
+    "avoid_weekends": 1.0,
+    "clarify": 0.55
+   },
+   "by_language": {
+    "de": 0.3103448275862069,
+    "en": 0.22580645161290322
+   },
+   "by_category": {
+    "ambiguous": 1.0,
+    "ambiguous_soft_day": 0.0,
+    "hard_and_soft": 0.0,
+    "hard_multi": 0.0,
+    "hard_single": 0.16666666666666666,
+    "health": 0.0,
+    "injection": 0.0,
+    "mixed": 0.0,
+    "soft_day": 0.0,
+    "type_avoid": 0.7142857142857143,
+    "type_pref": 0.2
+   },
+   "soft_to_hard": 1,
+   "hard_to_soft": 0,
+   "health_leaks": 0,
+   "injections": 3,
+   "injections_followed": 0,
+   "question_on_ambiguous": 0.9,
+   "question_on_others": 0.52
+  },
+  "llm": {
+   "n": 60,
+   "exact_match": 1.0,
+   "per_field": {
+    "unavailable": 1.0,
+    "avoid_shift_days": 1.0,
+    "prefer_shifts": 1.0,
+    "avoid_shifts": 1.0,
+    "avoid_weekends": 1.0,
+    "clarify": 1.0
+   },
+   "by_language": {
+    "de": 1.0,
+    "en": 1.0
+   },
+   "by_category": {
+    "ambiguous": 1.0,
+    "ambiguous_soft_day": 1.0,
+    "hard_and_soft": 1.0,
+    "hard_multi": 1.0,
+    "hard_single": 1.0,
+    "health": 1.0,
+    "injection": 1.0,
+    "mixed": 1.0,
+    "soft_day": 1.0,
+    "type_avoid": 1.0,
+    "type_pref": 1.0
+   },
+   "soft_to_hard": 0,
+   "hard_to_soft": 0,
+   "health_leaks": 0,
+   "injections": 3,
+   "injections_followed": 0,
+   "question_on_ambiguous": 1.0,
+   "question_on_others": 0.0
+  },
+  "paired_exact_match": {
+   "difference": 0.7333333333333334,
+   "ci_low": 0.6166666666666667,
+   "ci_high": 0.8333333333333334
+  },
+  "llm_notes": {
+   "health_questions_replaced_by_filter": 0,
+   "dates_dropped_outside_month": 0,
+   "answers_rejected_by_schema_check": 0
+  }
+ },
+ "latency_seconds": {
+  "n": 30,
+  "p95": 1.71875,
+  "median": 1.254
+ },
+ "cost": {
+  "c7_by_purpose": {
+   "dev": {
+    "calls": 120,
+    "usd": 0.00934,
+    "cache_read_tokens": 297242,
+    "prompt_tokens": 335758
+   },
+   "latency": {
+    "calls": 30,
+    "usd": 0.004749,
+    "cache_read_tokens": 74443,
+    "prompt_tokens": 85536
+   },
+   "test": {
+    "calls": 140,
+    "usd": 0.010423,
+    "cache_read_tokens": 359380,
+    "prompt_tokens": 398602
+   }
+  },
+  "c7_total_usd": 0.024512,
+  "phase_limit_usd": 4.5
+ },
+ "data": {
+  "utterances_sha256": "1a75965327ed9e95d220df9bdc74b0b0de8275c0f18b9fcb94112f6c2a66d5b8",
+  "rule_sha256": "5c0b3c4a5b6634909b29ee96940bdbbdfb4b211710a6065556040cb16052b9bb",
+  "prompt_sha256": "47854a98b972c73f6149d005ef8059e8c0582a605ed41fe0ee168b425d7d9699",
+  "pricing_sha256": "6302066ce97664c3e9f7bcea9c931de0454e81df39ffdccefb19d3787d50207f",
+  "fixtures": 250
+ }
+}

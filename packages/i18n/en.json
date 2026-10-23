@@ -990,7 +990,7 @@
       "c7ServedStandIn": "Served: the keyword stand-in. The language model was evaluated against the pre-registered rule and did not meet it.",
       "c7Promoted": "All seven checks of the pre-registered rule passed.",
       "c7NotPromoted": "Checks of the pre-registered rule not passed: {failed}. The model was not switched and the prompt was not changed afterwards.",
-      "c7Cost": "All paid calls of the phase so far: {spent} of {limit} US dollars.",
+      "c7Cost": "Cost of this evaluation: {spent} US dollars (limit for all paid calls of the phase: {limit})",
       "c7Note": "140 synthetic test utterances (German and English), scored once after the prompt was frozen; they are generated, not written by staff."
     },
     "group": {

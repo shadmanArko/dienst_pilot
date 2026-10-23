@@ -325,8 +325,8 @@ def cmd_report(check: bool = False) -> int:
         },
         "cost": {
             "c7_by_purpose": spent,
-            "phase_total_usd": Ledger().total_usd(),
-            "limit_usd": LIMIT_USD,
+            "c7_total_usd": round(sum(s["usd"] for s in spent.values()), 6),
+            "phase_limit_usd": LIMIT_USD,
         },
         "data": {
             "utterances_sha256": _sha(UTTERANCES),

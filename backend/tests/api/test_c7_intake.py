@@ -204,8 +204,14 @@ def test_the_stand_in_serves_until_the_rule_has_promoted_the_model(verdict: Any)
     assert e.info.implementation == "stand-in" and "did not meet" in e.info.note
     verdict(True)
     assert build_intake(Settings(llm_mode="off")).info.implementation == "stand-in"
-    assert build_intake(Settings(llm_mode="live")).info.implementation == "stand-in"  # no key
-    assert build_intake(Settings(llm_mode="auto")).info.implementation == "stand-in"
+    assert (
+        build_intake(Settings(llm_mode="live", anthropic_api_key=None)).info.implementation
+        == "stand-in"
+    )
+    assert (
+        build_intake(Settings(llm_mode="auto", anthropic_api_key=None)).info.implementation
+        == "stand-in"
+    )
     e = build_intake(Settings(llm_mode="replay"))
     assert e.info.implementation == "built" and "recorded" in e.info.note
 

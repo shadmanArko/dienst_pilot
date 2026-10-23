@@ -33,3 +33,5 @@ agents/rag/embeddings/
 agents/rag/threshold.json
 agents/rag/source/
 agents/rag/corpus/
+agents/intake/*.json
+eval/usage/

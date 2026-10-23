@@ -20,7 +20,7 @@ Version 0.2, October 2026. Companion to `PROCESS.md` (how the product is used) a
 | C6 | Leave Feasibility Surrogate (`ml/`) | ML, simulation-trained classification | Built & evaluated on synthetic data (`eval/results/c6.json`). The served model is the logistic-regression baseline: the LightGBM learner did not meet the promotion rule. Advisory hint only; the solver's answer is the one shown (model card) |
 | — | MCP servers (`mcp_servers/`: roster, planning, rules, forecast, notify) | Application | Built & tested on synthetic data (backend and mcp tests; thin wrappers over the REST API, ADR-018) |
 | — | Rulebook retrieval, RAG (`agents/`, `agents/rag/`) | Retrieval | Built & evaluated on synthetic data (`eval/results/rag.json`, 60 questions written for the prototype). Hybrid retrieval did not beat vectors alone (pre-registered check failed), so vectors alone are served; hybrid is a setting (model card `rag-rulebook.md`) |
-| C7 | Request Intake Agent | LLM, structured output | Designed |
+| C7 | Request Intake Agent (`agents/`, `backend/.../engines/c7.py`) | LLM, structured output | Built & evaluated on synthetic data (`eval/results/c7.json`). **The keyword stand-in is served:** the language model (`claude-haiku-5-5`) failed one pre-registered check (it followed an injected instruction once), so it is not promoted and the model was not switched (model card `c7-request-intake.md`) |
 | C8 | Planner Copilot | LLM agent, MCP tools, RAG | Designed |
 | — | Staff app and planner dashboard | UI prototype | Designed |
 | — | Pilot with a clinic | Validation | Not started |
@@ -242,7 +242,7 @@ A pure function `validate(roster, ruleset) → list[Violation]`, implemented ind
 
 **Guardrails.** Reasons are not stored (data minimization). A deterministic filter and the prompt both ensure no health information is extracted or kept. Input is delimited and treated as data, never as instructions.
 
-**Evaluation.** Golden set of 200 synthetic utterances (DE and EN); field-level exact match; clarifying-question rate.
+**Evaluation.** 200 synthetic utterances (DE and EN, 60 dev and 140 test, exact labels by construction), a pre-registered rule with seven checks (`agents/intake/PROMOTION_RULE.md`), results in `eval/results/c7.json` and the model card. Result: the model failed one check and is not served.
 
 ### C8: Planner Copilot (Planungs-Assistent)
 

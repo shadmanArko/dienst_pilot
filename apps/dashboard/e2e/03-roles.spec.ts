@@ -58,15 +58,17 @@ test("W13: every component with its real status; none can change the roster", as
       "data-implementation",
       "built",
     );
-  for (const c of ["C7", "C8"]) {
+  for (const c of ["C7", "C8"])
     await expect(page.getByTestId(`component-${c}`)).toHaveAttribute(
       "data-implementation",
       "stand-in",
     );
-    await expect(
-      page.getByTestId(`component-${c}`).getByTestId("metric-placeholder"),
-    ).toBeVisible();
-  }
+  await expect(page.getByTestId("component-C8").getByTestId("metric-placeholder")).toBeVisible();
+  // C7 was evaluated; the language model did not meet its pre-registered rule, so the stand-in is
+  // served and the card says so, with the measured results.
+  await expect(page.getByTestId("c7-served")).toContainText("Stichwort-Platzhalter");
+  await expect(page.getByTestId("c7-promotion")).toContainText("Nicht bestandene Prüfungen");
+  await expect(page.getByTestId("c7-metrics")).toContainText("Eingeschleuste Anweisung befolgt");
   await expect(page.getByTestId("can-change").filter({ hasText: "Nein" })).toHaveCount(9);
   // The summary line is computed from the cards on screen: the eight numbered components only,
   // with the unnumbered rulebook card named after the count, never added to it.

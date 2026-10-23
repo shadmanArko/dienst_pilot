@@ -434,7 +434,7 @@ function C7Metrics({ m, fmt }: { m: Metrics; fmt: Fmt }): ReactNode {
   const test = m.test as { llm?: C7Side; standin?: C7Side } | undefined;
   const checks = m.checks as Record<string, boolean> | undefined;
   const promoted = m.promoted === true;
-  const cost = m.cost as { phase_total_usd?: number; limit_usd?: number } | undefined;
+  const cost = m.cost as { c7_total_usd?: number; phase_limit_usd?: number } | undefined;
   const rows: { key: string; label: string; f: (s: C7Side) => string }[] = [
     { key: "em", label: t("m.c7Exact"), f: (s) => fmt.percent(s.exact_match) },
     { key: "s2h", label: t("m.c7SoftHard"), f: (s) => fmt.number(s.soft_to_hard, 0) },
@@ -493,11 +493,11 @@ function C7Metrics({ m, fmt }: { m: Metrics; fmt: Fmt }): ReactNode {
           })}
         </p>
       ) : null}
-      {cost?.phase_total_usd !== undefined ? (
+      {cost?.c7_total_usd !== undefined ? (
         <p className="caption m-0 text-ink-muted">
           {t("m.c7Cost", {
-            spent: fmt.number(cost.phase_total_usd, 3),
-            limit: fmt.number(cost.limit_usd ?? 0, 2),
+            spent: fmt.number(cost.c7_total_usd, 3),
+            limit: fmt.number(cost.phase_limit_usd ?? 0, 2),
           })}
         </p>
       ) : null}

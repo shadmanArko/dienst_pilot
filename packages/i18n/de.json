@@ -990,7 +990,7 @@
       "c7ServedStandIn": "Eingesetzt: der Stichwort-Platzhalter. Das Sprachmodell wurde nach der vorab festgelegten Regel bewertet und hat sie nicht erfüllt.",
       "c7Promoted": "Alle sieben Prüfungen der vorab festgelegten Regel bestanden.",
       "c7NotPromoted": "Nicht bestandene Prüfungen der vorab festgelegten Regel: {failed}. Das Modell wurde nicht gewechselt und der Text der Anweisung nicht nachträglich geändert.",
-      "c7Cost": "Kosten aller bezahlten Aufrufe der Phase bisher: {spent} von {limit} US-Dollar.",
+      "c7Cost": "Kosten dieser Auswertung: {spent} US-Dollar (Grenze für alle bezahlten Aufrufe der Phase: {limit})",
       "c7Note": "140 synthetische Testsätze (Deutsch und Englisch), einmal bewertet, nachdem die Anweisung eingefroren war; die Sätze sind erzeugt, nicht von Beschäftigten geschrieben."
     },
     "group": {

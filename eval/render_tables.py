@@ -530,8 +530,9 @@ def c7_tables(doc: dict | None) -> str:  # type: ignore[type-arg]
         f"{t['llm_notes']['health_questions_replaced_by_filter']} questions replaced by the health filter, "
         f"{t['llm_notes']['dates_dropped_outside_month']} dates dropped outside the month.",
         "",
-        "Cost (all paid calls of the phase, from the ledger): "
-        f"${doc['cost']['phase_total_usd']:.4f} of ${doc['cost']['limit_usd']:.2f}.",
+        "Cost of this evaluation (from the ledger; "
+        + ", ".join(f"{k} ${v['usd']:.4f}" for k, v in doc["cost"]["c7_by_purpose"].items())
+        + f"): ${doc['cost']['c7_total_usd']:.4f}, against the phase limit of ${doc['cost']['phase_limit_usd']:.2f}.",
         C7_END,
     ]
     return "\n".join(lines)
